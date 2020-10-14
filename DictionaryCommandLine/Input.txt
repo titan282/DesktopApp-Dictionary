@@ -1,0 +1,11 @@
+10
+One   một
+Two   hai
+Three     ba
+Four    bốn
+Five     số năm
+Six số sáu
+Seven số 7
+Eight tám
+Nine chín
+Ten mười

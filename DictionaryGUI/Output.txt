@@ -1,0 +1,13 @@
+Tu dien nay co 10 tu:
+______________________________________________
+No    |English                     |Vietnamese
+1     |One                         |một
+2     |Two                         |hai
+3     |Three                       |ba
+4     |Four                        |bốn
+5     |Five                        |số năm
+6     |Six                         |số sáu
+7     |Seven                       |số 7
+8     |Eight                       |tám
+9     |Nine                        |chín
+10    |Ten                         |mười
