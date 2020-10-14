@@ -39,6 +39,29 @@ public class RootController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         words.insertFromFile();
         loadData();
+        searchList();
+    }
+
+    public void addWord(String target, String exlain) {
+
+    }
+
+    public void removeWord(String target) {
+        words.removeWord(target);
+        list.removeAll(target);
+        listView.getItems().remove(list);
+    }
+
+    public void loadData() {
+        int size = words.getDictionaryData().getSize();
+        list.clear();
+        for (int i = 0; i < size; i++) {
+            list.addAll(words.getDictionaryData().getWord(i).getWord_target());
+        }
+        listView.setItems(list);
+        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+    public void searchList(){
         FilteredList<String> filteredData = new FilteredList<>(list, p -> true);
 
         //Set the filter Predicate whenever the filter changes.
@@ -60,32 +83,12 @@ public class RootController implements Initializable {
                 return false; //Does not match
             });
         });
-
         //Wrap the FilteredList in a SortedList.
         SortedList<String> sortedData = new SortedList<>(filteredData);
-
         //put the sorted list into the listview
         listView.setItems(sortedData);
-    }
-
-    public void addWord(String target, String exlain) {
 
     }
-
-    public void removeWord(String target) {
-
-    }
-
-    public void loadData() {
-        int size = words.getDictionaryData().getSize();
-        list.clear();
-        for (int i = 0; i < size; i++) {
-            list.addAll(words.getDictionaryData().getWord(i).getWord_target());
-        }
-        listView.setItems(list);
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    }
-
     public void displaySelected(MouseEvent mouseEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
         String output = words.dictionaryLookup(target).getWord_explain();
