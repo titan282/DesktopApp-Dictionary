@@ -35,7 +35,7 @@ import java.util.Scanner;
 
 public class RootController implements Initializable {
     @FXML
-    private TextArea textArea;
+    private WebView webView;
     @FXML
     private ListView<String> listView;
     @FXML
@@ -87,30 +87,34 @@ public class RootController implements Initializable {
             list.addAll(words.getDictionaryData().getWord(i).getWord_target());
         }
         listView.setItems(list);
-//        listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     public void displaySelected(MouseEvent mouseEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
         String output = words.dictionaryLookup(target).getWord_explain();
-        textArea.setText(output);
+        WebEngine webEngine=webView.getEngine();
+        webEngine.loadContent(output);
     }
 
     public void displayPressed(KeyEvent keyEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
         String output = words.dictionaryLookup(target).getWord_explain();
-        textArea.setText(output);
+        WebEngine webEngine=webView.getEngine();
+        webEngine.loadContent(output);
     }
 
 
     public void handle(ActionEvent actionEvent) {
         String x = searchWord.getText();
-        textArea.setText(words.dictionaryLookup(x).getWord_explain());
+        WebEngine webEngine=webView.getEngine();
+        webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
     }
 
     public void searchWordType(KeyEvent keyEvent) {
         String x = searchWord.getText();
-        textArea.setText(words.dictionaryLookup(x).getWord_explain());
+        WebEngine webEngine=webView.getEngine();
+        webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
     }
 
     public void handleRemove(MouseEvent mouseEvent) throws IOException {

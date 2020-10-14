@@ -12,6 +12,6 @@
       <Button layoutX="235.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#handleRemove" text="Remove" />
       <Button layoutX="327.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#handleAdd" text="Add" />
       <Button layoutX="398.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#handleEdit" text="Edit" />
-      <TextArea fx:id="textArea" layoutX="235.0" layoutY="62.0" prefHeight="332.0" prefWidth="358.0" />
+      <WebView fx:id="webView" layoutX="227.0" layoutY="62.0" prefHeight="332.0" prefWidth="358.0" />
    </children>
 </AnchorPane>
