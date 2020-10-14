@@ -19,7 +19,7 @@ public class AddController {
 
 
     public void addWord(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/root_panel.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/panel/root_panel.fxml"));
         Parent parent=loader.load();
         RootController controller = loader.getController();
         controller.addWord(english.getText(), vietnamese.getText());

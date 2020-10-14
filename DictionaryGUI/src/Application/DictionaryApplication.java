@@ -10,7 +10,7 @@ public class DictionaryApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/root_panel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/root_panel.fxml"));
         primaryStage.setTitle("Dictionary");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

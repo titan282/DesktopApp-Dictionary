@@ -1,6 +1,6 @@
 package controller;
 
-import cmd.*;
+import cmd.*;;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,25 +13,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchEvent;
-import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.security.Key;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class RootController implements Initializable {
     @FXML
@@ -76,12 +68,14 @@ public class RootController implements Initializable {
         listView.setItems(sortedData);
     }
 
-    public void addWord(String target, String exlain)  {
+    public void addWord(String target, String exlain) {
 
     }
-    public void removeWord(String target){
+
+    public void removeWord(String target) {
 
     }
+
     public void loadData() {
         int size = words.getDictionaryData().getSize();
         list.clear();
@@ -95,32 +89,33 @@ public class RootController implements Initializable {
     public void displaySelected(MouseEvent mouseEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
         String output = words.dictionaryLookup(target).getWord_explain();
-        WebEngine webEngine=webView.getEngine();
+        WebEngine webEngine = webView.getEngine();
         webEngine.loadContent(output);
+        searchWord.setText(target);
     }
 
     public void displayPressed(KeyEvent keyEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
         String output = words.dictionaryLookup(target).getWord_explain();
-        WebEngine webEngine=webView.getEngine();
+        WebEngine webEngine = webView.getEngine();
         webEngine.loadContent(output);
     }
 
 
     public void handle(ActionEvent actionEvent) {
         String x = searchWord.getText();
-        WebEngine webEngine=webView.getEngine();
+        WebEngine webEngine = webView.getEngine();
         webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
     }
 
     public void searchWordType(KeyEvent keyEvent) {
         String x = searchWord.getText();
-        WebEngine webEngine=webView.getEngine();
+        WebEngine webEngine = webView.getEngine();
         webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
     }
 
     public void handleRemove(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/remove_panel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/remove_panel.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Remove word !");
@@ -129,7 +124,7 @@ public class RootController implements Initializable {
     }
 
     public void handleAdd(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/add_panel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/add_panel.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Add New word !");
@@ -138,11 +133,17 @@ public class RootController implements Initializable {
     }
 
     public void handleEdit(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/edit_panel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/edit_panel.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Edit word !");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void speakWord(MouseEvent mouseEvent) throws IOException, javazoom.jl.decoder.JavaLayerException {
+//        Audio audio = Audio.getInstance();
+//        InputStream sound = audio.getAudio("Hello", "en");
+//        audio.play(sound);
     }
 }

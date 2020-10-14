@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="1012.0" style="-fx-background-color: #d9c7a3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+   <children>
+      <TextField fx:id="searchWord" layoutX="4.0" layoutY="6.0" onAction="#handle" onKeyTyped="#searchWordType" prefHeight="47.0" prefWidth="263.0" promptText="Search Word" AnchorPane.leftAnchor="4.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></TextField>
+      <ListView fx:id="listView" layoutX="4.0" layoutY="55.0" onKeyPressed="#displayPressed" onMouseClicked="#displaySelected" prefHeight="650.0" prefWidth="263.0" />
+      <VBox layoutX="278.0" layoutY="9.0" prefHeight="695.0" prefWidth="734.0" style="-fx-background-color: #d2d4d2;">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="734.0" style="-fx-padding: 0 0 10px 0;">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label style="-fx-padding: 3 0 0 5;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <ImageView fitHeight="47.0" fitWidth="52.0" onMouseClicked="#speakWord">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <image>
+                              <Image url="@../icon/icons8_Speaker_48px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Label layoutX="216.0" layoutY="3.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="247.0" layoutY="3.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="falseBookmark" layoutX="278.0" layoutY="3.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <Label fx:id="trueBookmark">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="332.0" layoutY="8.0" />
+                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="597.0" layoutY="1.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8_Edit_52px_2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="681.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../icon/help.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="515.0" onMouseClicked="#handleRemove">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../icon/icons8_Trash_52px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="430.0" onMouseClicked="#handleAdd">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../icon/add-1-icon--flatastic-1-iconset--custom-icon-design-0.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <WebView fx:id="webView" prefHeight="686.0" prefWidth="734.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

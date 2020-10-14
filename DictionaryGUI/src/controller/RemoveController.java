@@ -17,7 +17,7 @@ public class RemoveController {
 
     @FXML
     void remove(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/root_panel.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/panel/root_panel.fxml"));
         Parent parent=loader.load();
         RootController controller = loader.getController();
         controller.removeWord(textRemove.getText());
