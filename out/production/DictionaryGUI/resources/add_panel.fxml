@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="320.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddController">
+   <children>
+      <Text layoutX="300.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="234.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add word" />
+      <Text layoutX="127.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietnammese" />
+      <Text layoutX="172.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English" />
+      <TextField fx:id="english" layoutX="222.0" layoutY="123.0" promptText="Nhap tu tieng anh" />
+      <TextArea fx:id="vietnamese" layoutX="216.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" promptText="Nhap giai nghia" />
+      <Button layoutX="477.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#addWord" text="Add" />
+   </children>
+</AnchorPane>

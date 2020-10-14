@@ -77,8 +77,10 @@ public class RootController implements Initializable {
     }
 
     public void addWord(String target, String exlain)  {
+
     }
     public void removeWord(String target){
+
     }
     public void loadData() {
         int size = words.getDictionaryData().getSize();

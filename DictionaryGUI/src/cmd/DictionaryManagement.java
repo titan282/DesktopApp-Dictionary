@@ -134,31 +134,9 @@ public class DictionaryManagement {
     }
 
     public void removeWord(String target) {
-        if (haveWord(target)) {
             dictionaryData.removeWord(dictionaryLookup(target));
-            System.out.printf(" -->Xoa tu [%s] thanh cong\n", target);
-        } else {
-            System.out.println(" -->Khong co tu nay trong tu dien. Chon Option 1 neu ban muon them!");
-        }
-
     }
 
-    public void editWord() {
-        System.out.print(" -->Nhap tu muon edit: ");
-        Scanner scan = new Scanner(System.in);
-        String target = scan.nextLine();
-        if (haveWord(target)) {
-            dictionaryData.removeWord(dictionaryLookup(target));
-            System.out.print(" -->Word target: ");
-            target = scan.nextLine();
-            System.out.print(" -->Word explain:");
-            String explain = scan.nextLine();
-            dictionaryData.addWord(new Word(target, explain));
-            System.out.printf(" -->Edit tu [%s] thanh cong!\n", target);
-        } else {
-            System.out.println(" -->Khong co tu nay trong tu dien, Chon option 1 neu ban muon them no vao tu dien !");
-        }
-    }
 
     public void dictionaryExportToFile(String filePath) {
 
