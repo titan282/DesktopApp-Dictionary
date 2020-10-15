@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +35,21 @@ public class RootController implements Initializable {
     protected ListView<String> listView;
     @FXML
     private TextField searchWord;
+    @FXML
+    private TextField textRemove;
+    @FXML
+    private TextField textEnglishAdd;
+    @FXML
+    private TextArea textVietnameseAdd;
+    @FXML
+    private TextField textNeedEdit;
+
+    @FXML
+    private TextArea textVietnammeseNew;
+
+    @FXML
+    private TextField textEnglishNew;
+
     protected ObservableList<String> list = FXCollections.observableArrayList();
     public DictionaryManagement words = new DictionaryManagement();
 
@@ -150,6 +166,28 @@ public class RootController implements Initializable {
     public void speakWord(MouseEvent mouseEvent)  {
     }
 
+    public void deteleButton(ActionEvent actionEvent) {
+        Word tempWord=words.dictionaryLookup(textRemove.getText());
+        list.remove(tempWord.getWord_target());
+        listView.setItems(list);
+        searchList();
+    }
+
+    public void addWord(ActionEvent actionEvent) {
+        list.add(textEnglishAdd.getText());
+        listView.setItems(list);
+        words.addWord(textEnglishAdd.getText(),textVietnameseAdd.getText());
+        searchList();
+    }
+
+    public void editWord(ActionEvent actionEvent) {
+        Word tempWord=words.dictionaryLookup(textNeedEdit.getText());
+        list.remove(tempWord.getWord_target());
+        list.add(textEnglishNew.getText());
+        words.addWord(textEnglishNew.getText(),textVietnammeseNew.getText());
+        listView.setItems(list);
+        searchList();
+    }
 }
 
 
