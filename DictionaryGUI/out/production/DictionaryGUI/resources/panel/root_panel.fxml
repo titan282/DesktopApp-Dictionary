@@ -49,7 +49,7 @@
                         <Image url="@../icon/icons8_Edit_52px_2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="55.0" fitWidth="52.0" layoutX="668.0" layoutY="-3.0">
+                  <ImageView fitHeight="55.0" fitWidth="57.0" layoutX="668.0" layoutY="-3.0" onMouseClicked="#helpAction">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -57,7 +57,7 @@
                         <Image url="@../icon/help.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="52.0" layoutX="509.0" onMouseClicked="#handleRemove">
+                  <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="508.0" onMouseClicked="#handleRemove">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -87,7 +87,7 @@
             </AnchorPane>
             <TabPane fx:id="tabPane" prefHeight="688.0" prefWidth="734.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Home">
+                <Tab onSelectionChanged="#homeAction" text="Home">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -96,7 +96,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Add">
+                  <Tab onSelectionChanged="#selectAddTab" text="Add">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -129,7 +129,7 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                <Tab fx:id="tabRemove" text="Remove">
+                <Tab fx:id="tabRemove" onSelectionChanged="#selectRemove" text="Remove">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -156,7 +156,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Edit">
+                  <Tab onSelectionChanged="#selectEdit" text="Edit">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #bed3e6;">
                            <children>

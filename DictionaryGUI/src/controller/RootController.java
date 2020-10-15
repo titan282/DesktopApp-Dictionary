@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -114,13 +115,16 @@ public class RootController implements Initializable {
 
     }
 
-    public void displaySelected(MouseEvent mouseEvent) {
-        String target = listView.getSelectionModel().getSelectedItem();
-        String output = words.dictionaryLookup(target).getWord_explain();
-        WebEngine webEngine = webView.getEngine();
-        webEngine.loadContent(output);
+    public void displaySelected(MouseEvent mouseEvent) throws NullPointerException {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(0);
+        String target = listView.getSelectionModel().getSelectedItem();
+        if(target!=null) {
+            String output = words.dictionaryLookup(target).getWord_explain();
+            WebEngine webEngine = webView.getEngine();
+            webEngine.loadContent(output);
+            String word = listView.getSelectionModel().getSelectedItem();
+        }
     }
 
     public void displayPressed(KeyEvent keyEvent) {
@@ -249,16 +253,52 @@ public class RootController implements Initializable {
     public void clickSearchBar(MouseEvent mouseEvent) {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(0);
+        loadWebView();
     }
     public void speakWord(MouseEvent mouseEvent)  {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(0);
+        loadWebView();
     }
 
     public void homeClick(MouseEvent mouseEvent) {
         clearAllText();
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(0);
+        loadWebView();
+    }
+    public void loadWebView(){
+        String x = searchWord.getText();
+        WebEngine webEngine = webView.getEngine();
+        if(words.haveWord(x)){
+            webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());}
+        else{
+            webEngine.loadContent("");
+        }
+    }
+    public void helpAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/help_panel.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("Help!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void selectAddTab(Event event) {
+        clearAllText();
+    }
+
+    public void selectRemove(Event event) {
+        clearAllText();
+    }
+
+    public void selectEdit(Event event) {
+        clearAllText();
+    }
+
+    public void homeAction(Event event) {
+        loadWebView();
     }
 }
 
