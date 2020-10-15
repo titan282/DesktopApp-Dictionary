@@ -42,11 +42,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label layoutX="247.0" layoutY="3.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
                   <Label fx:id="falseBookmark" layoutX="278.0" layoutY="3.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -59,7 +54,6 @@
                         </Label>
                      </graphic>
                   </Label>
-                  <Label layoutX="332.0" layoutY="8.0" />
                   <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="597.0" layoutY="1.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/icons8_Edit_52px_2.png" />
