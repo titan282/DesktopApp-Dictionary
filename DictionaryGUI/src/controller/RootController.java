@@ -1,6 +1,8 @@
 package controller;
 
 import cmd.*;;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -29,11 +31,14 @@ public class RootController implements Initializable {
     @FXML
     private WebView webView;
     @FXML
-    private ListView<String> listView;
+    protected ListView<String> listView;
     @FXML
     private TextField searchWord;
-    ObservableList<String> list = FXCollections.observableArrayList();
-    DictionaryManagement words = new DictionaryManagement();
+    protected ObservableList<String> list = FXCollections.observableArrayList();
+    public DictionaryManagement words = new DictionaryManagement();
+
+    public RootController() {
+    }
 
     // Tạo một ListView
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,25 +48,23 @@ public class RootController implements Initializable {
     }
 
     public void addWord(String target, String exlain) {
-
+        System.out.println("Hmmm");
     }
 
     public void removeWord(String target) {
-        words.removeWord(target);
-        list.removeAll(target);
-        listView.getItems().remove(list);
+        list.clear();
+        listView.setItems(list);
     }
 
     public void loadData() {
         int size = words.getDictionaryData().getSize();
-        list.clear();
         for (int i = 0; i < size; i++) {
             list.addAll(words.getDictionaryData().getWord(i).getWord_target());
         }
         listView.setItems(list);
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
-    public void searchList(){
+
+    public void searchList() {
         FilteredList<String> filteredData = new FilteredList<>(list, p -> true);
 
         //Set the filter Predicate whenever the filter changes.
@@ -89,12 +92,12 @@ public class RootController implements Initializable {
         listView.setItems(sortedData);
 
     }
+
     public void displaySelected(MouseEvent mouseEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
         String output = words.dictionaryLookup(target).getWord_explain();
         WebEngine webEngine = webView.getEngine();
         webEngine.loadContent(output);
-        searchWord.setText(target);
     }
 
     public void displayPressed(KeyEvent keyEvent) {
@@ -121,7 +124,7 @@ public class RootController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/remove_panel.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setTitle("Remove word !");
+        stage.setTitle("Remove word!");
         stage.setScene(scene);
         stage.show();
     }
@@ -144,9 +147,9 @@ public class RootController implements Initializable {
         stage.show();
     }
 
-    public void speakWord(MouseEvent mouseEvent) throws IOException, javazoom.jl.decoder.JavaLayerException {
-//        Audio audio = Audio.getInstance();
-//        InputStream sound = audio.getAudio("Hello", "en");
-//        audio.play(sound);
+    public void speakWord(MouseEvent mouseEvent)  {
     }
+
 }
+
+

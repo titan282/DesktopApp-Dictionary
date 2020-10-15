@@ -1,26 +1,26 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RemoveController {
+public class RemoveController extends RootController{
     @FXML
     private Button buttonRemove;
     @FXML
     private TextField textRemove;
-
     @FXML
-    void remove(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/panel/root_panel.fxml"));
-        Parent parent=loader.load();
-        RootController controller = loader.getController();
-        controller.removeWord(textRemove.getText());
+    void remove(ActionEvent event) {
+        RootController x=new RootController();
+        x.removeWord("test");
     }
 
 }

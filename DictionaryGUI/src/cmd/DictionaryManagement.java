@@ -52,23 +52,7 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
     }
-//    public void insertFromFile() {
-//        try {
-//            File fileDir = new File("dictionaries.txt");
-//            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
-//            while (br.ready()) {
-//                String lineWord = br.readLine();
-//                String[] parts = lineWord.split("\\t");
-//                if (parts.length == 2) {
-//                    addWord(parts[0], parts[1]);
-//                }
-//            }
-//            br.close();
-//        }catch (IOException e) {
-//            System.out.println("hic :(( File Not Found !");
-//            e.printStackTrace();
-//        }
-//    }
+
 //    public void insertFromFile() {
 //        try {
 //            Scanner scan = new Scanner(new File("Input.txt"));

@@ -22,7 +22,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label style="-fx-padding: 3 0 0 5;">
+                        <Label prefHeight="0.0" prefWidth="0.0" style="-fx-padding: 3 0 0 5;">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

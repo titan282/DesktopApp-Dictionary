@@ -2,10 +2,12 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -19,9 +21,7 @@ public class AddController {
 
 
     public void addWord(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/panel/root_panel.fxml"));
-        Parent parent=loader.load();
-        RootController controller = loader.getController();
-        controller.addWord(english.getText(), vietnamese.getText());
+        RootController x=new RootController();
+        x.addWord("f","f");
     }
 }
