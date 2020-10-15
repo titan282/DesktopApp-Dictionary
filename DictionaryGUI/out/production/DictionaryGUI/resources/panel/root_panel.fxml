@@ -112,7 +112,7 @@
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="textEnglishAdd" layoutX="205.0" layoutY="29.0" prefHeight="48.0" prefWidth="388.0" promptText="Nhap tu tieng anh" />
+                                    <TextField fx:id="textEnglishAdd" layoutX="205.0" layoutY="29.0" onAction="#enterAdd" prefHeight="48.0" prefWidth="388.0" promptText="Nhap tu tieng anh" />
                                     <TextArea fx:id="textVietnameseAdd" layoutX="204.0" layoutY="100.0" prefHeight="374.0" prefWidth="389.0" promptText="Nhap giai nghia" />
                                     <Button layoutX="206.0" layoutY="476.0" mnemonicParsing="false" onAction="#addWord" prefHeight="63.0" prefWidth="386.0" text="Add New Word">
                                        <font>
@@ -140,7 +140,7 @@
                                           <Font size="37.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="textRemove" layoutX="220.0" layoutY="203.0" prefHeight="55.0" prefWidth="296.0" promptText="Nhập từ ở đây" />
+                                    <TextField fx:id="textRemove" layoutX="220.0" layoutY="203.0" onAction="#enterRemove" prefHeight="55.0" prefWidth="296.0" promptText="Nhập từ ở đây" />
                                     <Button layoutX="220.0" layoutY="267.0" mnemonicParsing="false" onAction="#deteleButton" prefHeight="79.0" prefWidth="295.0" text="Delete Word">
                                        <font>
                                           <Font name="System Bold" size="23.0" />
@@ -178,8 +178,8 @@
                                        </font>
                                     </Text>
                                     <TextArea fx:id="textVietnammeseNew" layoutX="206.0" layoutY="141.0" prefHeight="241.0" prefWidth="371.0" promptText="Nhập giải nghĩa ở đây" />
-                                    <TextField fx:id="textEnglishNew" layoutX="207.0" layoutY="78.0" prefHeight="47.0" prefWidth="371.0" promptText="Nhập từ English" />
-                                    <TextField fx:id="textNeedEdit" layoutX="207.0" layoutY="17.0" prefHeight="41.0" prefWidth="371.0" promptText="Nhập từ cần edit" />
+                                    <TextField fx:id="textEnglishNew" layoutX="207.0" layoutY="78.0" onAction="#enterEdit2" prefHeight="47.0" prefWidth="371.0" promptText="Nhập từ English" />
+                                    <TextField fx:id="textNeedEdit" layoutX="207.0" layoutY="17.0" onAction="#enterEdit1" prefHeight="41.0" prefWidth="371.0" promptText="Nhập từ cần edit" />
                                     <Button layoutX="206.0" layoutY="386.0" mnemonicParsing="false" onAction="#editWord" prefHeight="54.0" prefWidth="371.0" text="Accepted">
                                        <font>
                                           <Font name="System Bold" size="25.0" />

@@ -300,6 +300,83 @@ public class RootController implements Initializable {
     public void homeAction(Event event) {
         loadWebView();
     }
+
+    public void enterRemove(ActionEvent actionEvent) {
+        if(textRemove.getText().equals("")){
+            textRemoveAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(words.haveWord(textRemove.getText())){
+            Word tempWord=words.dictionaryLookup(textRemove.getText());
+            words.removeWord(tempWord.getWord_target());
+            list.remove(tempWord.getWord_target());
+            listView.setItems(list);
+            searchList();
+            textRemoveAlert.setText("Xóa từ thành công!");
+        }
+        else{
+            textRemoveAlert.setText("Từ này không có trong từ điển. Vui lòng nhập từ khác!");
+        }
+        String x = searchWord.getText();
+        WebEngine webEngine = webView.getEngine();
+        webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
+    }
+
+    public void enterAdd(ActionEvent actionEvent) {
+        if(textEnglishAdd.getText().equals("")||textVietnameseAdd.getText().equals("")){
+            textAddAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(words.haveWord(textEnglishAdd.getText())){
+            textAddAlert.setText("Từ này đã có trong từ điển rồi. Vui lòng nhập từ khác!");
+        }
+        else {
+            list.add(textEnglishAdd.getText());
+            listView.setItems(list);
+            words.addWord(textEnglishAdd.getText(), textVietnameseAdd.getText());
+            searchList();
+            textAddAlert.setText("Thêm từ thành còng!");
+        }
+        webView.getEngine().reload();
+    }
+
+    public void enterEdit1(ActionEvent actionEvent) {
+        if(textNeedEdit.getText().equals("")||textEnglishNew.getText().equals("")||textEnglishNew.getText().equals("")){
+            textEditAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(!words.haveWord(textNeedEdit.getText())){
+            textEditAlert.setText("Từ này không có trong từ điển nên không edit được. Vui lòng nhập từ khác!");
+        }
+        else {
+            Word tempWord = words.dictionaryLookup(textNeedEdit.getText());
+            list.remove(tempWord.getWord_target());
+            words.removeWord(tempWord.getWord_target());
+            list.add(textEnglishNew.getText());
+            words.addWord(textEnglishNew.getText(), textVietnammeseNew.getText());
+            listView.setItems(list);
+            searchList();
+            textEditAlert.setText("Edit từ thành công!");
+        }
+        webView.getEngine().reload();
+    }
+
+    public void enterEdit2(ActionEvent actionEvent) {
+        if(textNeedEdit.getText().equals("")||textEnglishNew.getText().equals("")||textEnglishNew.getText().equals("")){
+            textEditAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(!words.haveWord(textNeedEdit.getText())){
+            textEditAlert.setText("Từ này không có trong từ điển nên không edit được. Vui lòng nhập từ khác!");
+        }
+        else {
+            Word tempWord = words.dictionaryLookup(textNeedEdit.getText());
+            list.remove(tempWord.getWord_target());
+            words.removeWord(tempWord.getWord_target());
+            list.add(textEnglishNew.getText());
+            words.addWord(textEnglishNew.getText(), textVietnammeseNew.getText());
+            listView.setItems(list);
+            searchList();
+            textEditAlert.setText("Edit từ thành công!");
+        }
+        webView.getEngine().reload();
+    }
 }
 
 
