@@ -11,7 +11,7 @@ public class DictionaryApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/root_panel.fxml"));
-        primaryStage.setTitle("Dictionary");
+        primaryStage.setTitle("Best Dictionary in the World!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

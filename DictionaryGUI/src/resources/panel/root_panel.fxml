@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -9,14 +10,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="1012.0" style="-fx-background-color: #d9c7a3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1019.0" style="-fx-background-color: #089c8a;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
    <children>
-      <TextField fx:id="searchWord" layoutX="4.0" layoutY="6.0" onAction="#handle" onKeyTyped="#searchWordType" prefHeight="47.0" prefWidth="263.0" promptText="Search Word" AnchorPane.leftAnchor="4.0">
+      <TextField fx:id="searchWord" layoutX="4.0" layoutY="6.0" onAction="#handle" onKeyTyped="#searchWordType" onMouseClicked="#clickSearchBar" prefHeight="47.0" prefWidth="263.0" promptText="Search Word" AnchorPane.leftAnchor="4.0">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></TextField>
-      <ListView fx:id="listView" layoutX="4.0" layoutY="55.0" onKeyPressed="#displayPressed" onMouseClicked="#displaySelected" prefHeight="650.0" prefWidth="263.0" />
-      <VBox layoutX="278.0" layoutY="9.0" prefHeight="695.0" prefWidth="734.0" style="-fx-background-color: #d2d4d2;">
+      <ListView fx:id="listView" layoutX="4.0" layoutY="55.0" onKeyPressed="#displayPressed" onMouseClicked="#displaySelected" prefHeight="658.0" prefWidth="263.0">
+         <opaqueInsets>
+            <Insets right="10.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets left="10.0" />
+         </padding></ListView>
+      <VBox layoutX="278.0" layoutY="7.0" prefHeight="706.0" prefWidth="734.0" style="-fx-background-color: #d2d4d2;">
          <children>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="734.0" style="-fx-padding: 0 0 10px 0;">
                <children>
@@ -37,29 +44,12 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <Label layoutX="216.0" layoutY="3.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label fx:id="falseBookmark" layoutX="278.0" layoutY="3.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <Label fx:id="trueBookmark">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Label>
-                     </graphic>
-                  </Label>
-                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="597.0" layoutY="1.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="595.0" layoutY="1.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/icons8_Edit_52px_2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="681.0">
+                  <ImageView fitHeight="55.0" fitWidth="57.0" layoutX="668.0" layoutY="-3.0">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -67,7 +57,7 @@
                         <Image url="@../icon/help.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="515.0" onMouseClicked="#handleRemove">
+                  <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="508.0" onMouseClicked="#handleRemove">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -83,9 +73,19 @@
                         <Image url="@../icon/add-1-icon--flatastic-1-iconset--custom-icon-design-0.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="84.0" fitWidth="79.0" layoutX="328.0" layoutY="-16.0" onMouseClicked="#homeClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/—Pngtree—vector%20house%20icon_3792370.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#b94242" fontSmoothingType="LCD" layoutX="85.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have a good day!">
+                     <font>
+                        <Font name="Courier New" size="23.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
-            <TabPane prefHeight="688.0" prefWidth="734.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" prefHeight="688.0" prefWidth="734.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Home">
                   <content>
@@ -96,63 +96,71 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Remove">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane prefHeight="229.0" prefWidth="422.0">
-                                 <children>
-                                    <Text layoutX="99.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập từ bạn muốn xóa">
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="textRemove" layoutX="98.0" layoutY="99.0" prefHeight="32.0" prefWidth="225.0" />
-                                    <Button layoutX="127.0" layoutY="159.0" mnemonicParsing="false" onAction="#deteleButton" text="Delete Word">
-                                       <font>
-                                          <Font name="System Bold" size="23.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
                   <Tab text="Add">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <AnchorPane prefHeight="376.0" prefWidth="491.0">
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #e3f7d0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text fontSmoothingType="LCD" layoutX="21.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietnammese">
+                                    <Text fontSmoothingType="LCD" layoutX="23.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietnammese">
                                        <font>
-                                          <Font name="System Bold" size="18.0" />
+                                          <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Text>
-                                    <Text fontSmoothingType="LCD" layoutX="75.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English">
+                                    <Text fontSmoothingType="LCD" layoutX="99.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English">
                                        <font>
-                                          <Font name="System Bold" size="18.0" />
+                                          <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="textEnglishAdd" layoutX="143.0" layoutY="22.0" prefHeight="31.0" prefWidth="325.0" promptText="Nhap tu tieng anh" />
-                                    <TextArea fx:id="textVietnameseAdd" layoutX="143.0" layoutY="76.0" prefHeight="219.0" prefWidth="325.0" promptText="Nhap giai nghia" />
-                                    <Button layoutX="142.0" layoutY="303.0" mnemonicParsing="false" onAction="#addWord" prefHeight="45.0" prefWidth="325.0" text="Add New Word">
+                                    <TextField fx:id="textEnglishAdd" layoutX="205.0" layoutY="29.0" prefHeight="48.0" prefWidth="388.0" promptText="Nhap tu tieng anh" />
+                                    <TextArea fx:id="textVietnameseAdd" layoutX="204.0" layoutY="100.0" prefHeight="374.0" prefWidth="389.0" promptText="Nhap giai nghia" />
+                                    <Button layoutX="206.0" layoutY="476.0" mnemonicParsing="false" onAction="#addWord" prefHeight="63.0" prefWidth="386.0" text="Add New Word">
                                        <font>
-                                          <Font size="21.0" />
+                                          <Font name="System Bold" size="21.0" />
                                        </font>
                                     </Button>
+                                    <TextField fx:id="textAddAlert" alignment="CENTER" editable="false" layoutX="76.0" layoutY="537.0" prefHeight="56.0" prefWidth="646.0" style="-fx-background-color: #e3f7d0;">
+                                       <font>
+                                          <Font name="System Italic" size="17.0" />
+                                       </font></TextField>
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
                     </content>
                   </Tab>
+                <Tab fx:id="tabRemove" text="Remove">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #e6d7be;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text layoutX="178.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập từ bạn muốn xóa">
+                                       <font>
+                                          <Font size="37.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="textRemove" layoutX="220.0" layoutY="203.0" prefHeight="55.0" prefWidth="296.0" promptText="Nhập từ ở đây" />
+                                    <Button layoutX="220.0" layoutY="267.0" mnemonicParsing="false" onAction="#deteleButton" prefHeight="79.0" prefWidth="295.0" text="Delete Word">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="textRemoveAlert" alignment="CENTER" editable="false" layoutX="23.0" layoutY="346.0" prefHeight="63.0" prefWidth="690.0" style="-fx-background-color: #e6d7be;">
+                                       <font>
+                                          <Font name="System Italic" size="17.0" />
+                                       </font></TextField>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
                   <Tab text="Edit">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #bed3e6;">
                            <children>
-                              <AnchorPane prefHeight="454.0" prefWidth="605.0">
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #9bd8e8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Text layoutX="84.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ cần edit" wrappingWidth="112.0">
                                        <font>
@@ -177,6 +185,11 @@
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Button>
+                                    <TextField fx:id="textEditAlert" alignment="CENTER" layoutX="36.0" layoutY="461.0" prefHeight="46.0" prefWidth="662.0" style="-fx-background-color: #9bd8e8;">
+                                       <font>
+                                          <Font name="System Italic" size="17.0" />
+                                       </font>
+                                    </TextField>
                                  </children>
                               </AnchorPane>
                            </children>

@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
@@ -47,6 +44,16 @@ public class RootController implements Initializable {
 
     @FXML
     private TextField textEnglishNew;
+    @FXML
+    private Tab tabRemove;
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private TextField textRemoveAlert;
+    @FXML
+    private TextField textAddAlert;
+    @FXML
+    private TextField textEditAlert;
 
     protected ObservableList<String> list = FXCollections.observableArrayList();
     public DictionaryManagement words = new DictionaryManagement();
@@ -112,6 +119,8 @@ public class RootController implements Initializable {
         String output = words.dictionaryLookup(target).getWord_explain();
         WebEngine webEngine = webView.getEngine();
         webEngine.loadContent(output);
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(0);
     }
 
     public void displayPressed(KeyEvent keyEvent) {
@@ -135,57 +144,121 @@ public class RootController implements Initializable {
     }
 
     public void handleRemove(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/remove_panel.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setTitle("Remove word!");
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/remove_panel.fxml"));
+//        Scene scene = new Scene(root);
+//        Stage stage = new Stage(StageStyle.DECORATED);
+//        stage.setTitle("Remove word!");
+//        stage.setScene(scene);
+//        stage.show();
+        clearAllText();
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(2);
     }
 
     public void handleAdd(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/add_panel.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setTitle("Add New word !");
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/add_panel.fxml"));
+//        Scene scene = new Scene(root);
+//        Stage stage = new Stage(StageStyle.DECORATED);
+//        stage.setTitle("Add New word !");
+//        stage.setScene(scene);
+//        stage.show();
+        clearAllText();
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(1);
     }
 
     public void handleEdit(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/edit_panel.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setTitle("Edit word !");
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/edit_panel.fxml"));
+//        Scene scene = new Scene(root);
+//        Stage stage = new Stage(StageStyle.DECORATED);
+//        stage.setTitle("Edit word !");
+//        stage.setScene(scene);
+//        stage.show();
+        clearAllText();
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(3);
     }
-
-    public void speakWord(MouseEvent mouseEvent)  {
+    public void clearAllText(){
+        textRemove.clear();
+        textEditAlert.clear();
+        textEnglishNew.clear();
+        textNeedEdit.clear();
+        textVietnameseAdd.clear();
+        textEnglishAdd.clear();
+        textAddAlert.clear();
+        textRemoveAlert.clear();
+        textVietnammeseNew.clear();
     }
-
     public void deteleButton(ActionEvent actionEvent) {
-        Word tempWord=words.dictionaryLookup(textRemove.getText());
-        words.removeWord(tempWord.getWord_target());
-        list.remove(tempWord.getWord_target());
-        listView.setItems(list);
-        searchList();
+        if(textRemove.getText().equals("")){
+            textRemoveAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(words.haveWord(textRemove.getText())){
+            Word tempWord=words.dictionaryLookup(textRemove.getText());
+            words.removeWord(tempWord.getWord_target());
+            list.remove(tempWord.getWord_target());
+            listView.setItems(list);
+            searchList();
+            textRemoveAlert.setText("Xóa từ thành công!");
+        }
+        else{
+            textRemoveAlert.setText("Từ này không có trong từ điển. Vui lòng nhập từ khác!");
+        }
+        String x = searchWord.getText();
+        WebEngine webEngine = webView.getEngine();
+        webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
     }
 
     public void addWord(ActionEvent actionEvent) {
-        list.add(textEnglishAdd.getText());
-        listView.setItems(list);
-        words.addWord(textEnglishAdd.getText(),textVietnameseAdd.getText());
-        searchList();
+        if(textEnglishAdd.getText().equals("")||textVietnameseAdd.getText().equals("")){
+            textAddAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(words.haveWord(textEnglishAdd.getText())){
+            textAddAlert.setText("Từ này đã có trong từ điển rồi. Vui lòng nhập từ khác!");
+        }
+        else {
+            list.add(textEnglishAdd.getText());
+            listView.setItems(list);
+            words.addWord(textEnglishAdd.getText(), textVietnameseAdd.getText());
+            searchList();
+            textAddAlert.setText("Thêm từ thành còng!");
+        }
+        webView.getEngine().reload();
     }
 
     public void editWord(ActionEvent actionEvent) {
-        Word tempWord=words.dictionaryLookup(textNeedEdit.getText());
-        list.remove(tempWord.getWord_target());
-        list.add(textEnglishNew.getText());
-        words.addWord(textEnglishNew.getText(),textVietnammeseNew.getText());
-        listView.setItems(list);
-        searchList();
+        if(textNeedEdit.getText().equals("")||textEnglishNew.getText().equals("")||textEnglishNew.getText().equals("")){
+            textEditAlert.setText("Vui lòng điền đầy đủ thông tin");
+        }
+        else if(!words.haveWord(textNeedEdit.getText())){
+            textEditAlert.setText("Từ này không có trong từ điển nên không edit được. Vui lòng nhập từ khác!");
+        }
+        else {
+            Word tempWord = words.dictionaryLookup(textNeedEdit.getText());
+            list.remove(tempWord.getWord_target());
+            words.removeWord(tempWord.getWord_target());
+            list.add(textEnglishNew.getText());
+            words.addWord(textEnglishNew.getText(), textVietnammeseNew.getText());
+            listView.setItems(list);
+            searchList();
+            textEditAlert.setText("Edit từ thành công!");
+        }
+        webView.getEngine().reload();
+    }
+
+    public void clickSearchBar(MouseEvent mouseEvent) {
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(0);
+    }
+    public void speakWord(MouseEvent mouseEvent)  {
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(0);
+    }
+
+    public void homeClick(MouseEvent mouseEvent) {
+        clearAllText();
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(0);
     }
 }
 
