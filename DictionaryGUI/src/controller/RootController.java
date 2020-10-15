@@ -1,8 +1,6 @@
 package controller;
 
-import cmd.*;;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+import cmd.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -168,6 +166,7 @@ public class RootController implements Initializable {
 
     public void deteleButton(ActionEvent actionEvent) {
         Word tempWord=words.dictionaryLookup(textRemove.getText());
+        words.removeWord(tempWord.getWord_target());
         list.remove(tempWord.getWord_target());
         listView.setItems(list);
         searchList();
