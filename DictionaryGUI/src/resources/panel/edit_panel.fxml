@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="454.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Text layoutX="84.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ cần edit" wrappingWidth="112.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Text>
+      <Text layoutX="56.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ English mới">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Text>
+      <Text layoutX="44.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghĩa tiếng việt">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Text>
+      <TextArea layoutX="206.0" layoutY="141.0" prefHeight="241.0" prefWidth="371.0" promptText="Nhập giải nghĩa ở đây" />
+      <TextField layoutX="207.0" layoutY="78.0" prefHeight="47.0" prefWidth="371.0" promptText="Nhập từ English" />
+      <TextField layoutX="207.0" layoutY="17.0" prefHeight="41.0" prefWidth="371.0" promptText="Nhập từ cần edit" />
+      <Button layoutX="206.0" layoutY="386.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="371.0" text="Accepted">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

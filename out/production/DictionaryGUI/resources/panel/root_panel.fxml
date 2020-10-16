@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1019.0" style="-fx-background-color: #089c8a;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+   <children>
+      <TextField fx:id="searchWord" layoutX="4.0" layoutY="6.0" onAction="#handle" onKeyTyped="#searchWordType" onMouseClicked="#clickSearchBar" prefHeight="47.0" prefWidth="263.0" promptText="Search Word" AnchorPane.leftAnchor="4.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></TextField>
+      <ListView fx:id="listView" layoutX="4.0" layoutY="55.0" onKeyPressed="#displayPressed" onMouseClicked="#displaySelected" prefHeight="658.0" prefWidth="263.0">
+         <opaqueInsets>
+            <Insets right="10.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets left="10.0" />
+         </padding></ListView>
+      <VBox layoutX="278.0" layoutY="7.0" prefHeight="706.0" prefWidth="734.0" style="-fx-background-color: #d2d4d2;">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="734.0" style="-fx-padding: 0 0 10px 0;">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label prefHeight="0.0" prefWidth="0.0" style="-fx-padding: 3 0 0 5;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <ImageView fitHeight="47.0" fitWidth="52.0" onMouseClicked="#speakWord">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <image>
+                              <Image url="@../icon/icons8_Speaker_48px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="595.0" layoutY="1.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8_Edit_52px_2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="55.0" fitWidth="57.0" layoutX="668.0" layoutY="-3.0" onMouseClicked="#helpAction">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../icon/help.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="508.0" onMouseClicked="#handleRemove">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../icon/icons8_Trash_52px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="430.0" onMouseClicked="#handleAdd">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../icon/add-1-icon--flatastic-1-iconset--custom-icon-design-0.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="84.0" fitWidth="79.0" layoutX="328.0" layoutY="-16.0" onMouseClicked="#homeClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/—Pngtree—vector%20house%20icon_3792370.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#b94242" fontSmoothingType="LCD" layoutX="85.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have a good day!">
+                     <font>
+                        <Font name="Courier New" size="23.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <TabPane fx:id="tabPane" prefHeight="688.0" prefWidth="734.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab onSelectionChanged="#homeAction" text="Home">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <WebView fx:id="webView" prefHeight="608.0" prefWidth="734.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab onSelectionChanged="#selectAddTab" text="Add">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #e3f7d0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text fontSmoothingType="LCD" layoutX="23.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietnammese">
+                                       <font>
+                                          <Font name="System Bold" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fontSmoothingType="LCD" layoutX="99.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English">
+                                       <font>
+                                          <Font name="System Bold" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="textEnglishAdd" layoutX="205.0" layoutY="29.0" onAction="#enterAdd" prefHeight="48.0" prefWidth="388.0" promptText="Nhap tu tieng anh" />
+                                    <TextArea fx:id="textVietnameseAdd" layoutX="204.0" layoutY="100.0" prefHeight="374.0" prefWidth="389.0" promptText="Nhap giai nghia" />
+                                    <Button layoutX="206.0" layoutY="476.0" mnemonicParsing="false" onAction="#addWord" prefHeight="63.0" prefWidth="386.0" text="Add New Word">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="textAddAlert" alignment="CENTER" editable="false" layoutX="76.0" layoutY="537.0" prefHeight="56.0" prefWidth="646.0" style="-fx-background-color: #e3f7d0;">
+                                       <font>
+                                          <Font name="System Italic" size="17.0" />
+                                       </font></TextField>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                <Tab fx:id="tabRemove" onSelectionChanged="#selectRemove" text="Remove">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #e6d7be;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text layoutX="178.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập từ bạn muốn xóa">
+                                       <font>
+                                          <Font size="37.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="textRemove" layoutX="220.0" layoutY="203.0" onAction="#enterRemove" prefHeight="55.0" prefWidth="296.0" promptText="Nhập từ ở đây" />
+                                    <Button layoutX="220.0" layoutY="267.0" mnemonicParsing="false" onAction="#deteleButton" prefHeight="79.0" prefWidth="295.0" text="Delete Word">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="textRemoveAlert" alignment="CENTER" editable="false" layoutX="23.0" layoutY="346.0" prefHeight="63.0" prefWidth="690.0" style="-fx-background-color: #e6d7be;">
+                                       <font>
+                                          <Font name="System Italic" size="17.0" />
+                                       </font></TextField>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab onSelectionChanged="#selectEdit" text="Edit">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #bed3e6;">
+                           <children>
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #9bd8e8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text layoutX="84.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ cần edit" wrappingWidth="112.0">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="56.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ English mới">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="44.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghĩa tiếng việt">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <TextArea fx:id="textVietnammeseNew" layoutX="206.0" layoutY="141.0" prefHeight="241.0" prefWidth="371.0" promptText="Nhập giải nghĩa ở đây" />
+                                    <TextField fx:id="textEnglishNew" layoutX="207.0" layoutY="78.0" onAction="#enterEdit2" prefHeight="47.0" prefWidth="371.0" promptText="Nhập từ English" />
+                                    <TextField fx:id="textNeedEdit" layoutX="207.0" layoutY="17.0" onAction="#enterEdit1" prefHeight="41.0" prefWidth="371.0" promptText="Nhập từ cần edit" />
+                                    <Button layoutX="206.0" layoutY="386.0" mnemonicParsing="false" onAction="#editWord" prefHeight="54.0" prefWidth="371.0" text="Accepted">
+                                       <font>
+                                          <Font name="System Bold" size="25.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="textEditAlert" alignment="CENTER" layoutX="36.0" layoutY="461.0" prefHeight="46.0" prefWidth="662.0" style="-fx-background-color: #9bd8e8;">
+                                       <font>
+                                          <Font name="System Italic" size="17.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

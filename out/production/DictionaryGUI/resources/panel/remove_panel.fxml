@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="229.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+   <children>
+      <Text layoutX="99.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập từ bạn muốn xóa">
+         <font>
+            <Font size="22.0" />
+         </font></Text>
+      <TextField fx:id="textRemove" layoutX="98.0" layoutY="99.0" onAction="#remove" prefHeight="32.0" prefWidth="225.0" />
+      <Button fx:id="buttonRemove" layoutX="127.0" layoutY="159.0" mnemonicParsing="false" onMouseClicked="#remove" text="Delete Word">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
