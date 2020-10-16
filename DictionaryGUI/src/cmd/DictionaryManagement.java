@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class DictionaryManagement {
     private Dictionary dictionaryData = new Dictionary();
@@ -40,8 +41,30 @@ public class DictionaryManagement {
         }
     }
 
-    public void deleteWordInFile(){
-        Scanner scan=new Scanner("");
+    public void deleteWordInFile(String target) throws FileNotFoundException {
+        File file=new File("Input.txt");
+        Scanner scannerLines = new Scanner(file);
+            while (scannerLines.hasNextLine()) {
+                String line = scannerLines.nextLine();
+                line.replace(target,"");
+//                if (line.contains(" alle ")) {
+//                    //Delete alle from the line.
+//                    line.replace(", " ");
+//                    String nextLine = scannerLines.nextLine();
+//                    Pattern pattern = Pattern.compile("\\s\\d\\d\\s");
+//
+//                    Matcher m = pattern.matcher(nextLine);
+//                    while (m.find()) {
+//                        value = Integer.parseInt(m.group().trim());
+//                        line.replace(m.group(), " ");
+//
+//                        String nextLine2 = scannerLines.nextLine();
+//                        nextLine2.replace("Min", " ");
+//                        System.out.println(value);
+//                    }
+//                }
+//                writer.println(line);
+            }
     }
 
     /**

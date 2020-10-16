@@ -383,13 +383,13 @@ public class RootController implements Initializable {
         webView.getEngine().reload();
     }
 
-    public void translate(ActionEvent actionEvent) throws IOException {
-        textTranslateVietnamese.setText(GoogleTranslate.translate("en","vi",textTranslateEnglish.getText()));
-    }
-
     public void translateTab(MouseEvent mouseEvent) {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(4);
+    }
+
+    public void typeEnglish(KeyEvent keyEvent) throws IOException {
+        textTranslateVietnamese.setText(GoogleTranslate.translate("en","vi",textTranslateEnglish.getText()));
     }
 }
 
