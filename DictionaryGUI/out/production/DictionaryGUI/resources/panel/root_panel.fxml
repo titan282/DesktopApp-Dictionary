@@ -44,7 +44,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="595.0" layoutY="1.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="473.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/icons8_Edit_52px_2.png" />
                      </image>
@@ -57,7 +57,7 @@
                         <Image url="@../icon/help.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="508.0" onMouseClicked="#handleRemove">
+                  <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="531.0" layoutY="-1.0" onMouseClicked="#handleRemove">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -65,7 +65,7 @@
                         <Image url="@../icon/icons8_Trash_52px.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="430.0" onMouseClicked="#handleAdd">
+                  <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="405.0" layoutY="-1.0" onMouseClicked="#handleAdd">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -73,16 +73,21 @@
                         <Image url="@../icon/add-1-icon--flatastic-1-iconset--custom-icon-design-0.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="84.0" fitWidth="79.0" layoutX="328.0" layoutY="-16.0" onMouseClicked="#homeClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="84.0" fitWidth="79.0" layoutX="310.0" layoutY="-17.0" onMouseClicked="#homeClick" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/—Pngtree—vector%20house%20icon_3792370.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b94242" fontSmoothingType="LCD" layoutX="85.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have a good day!">
+                  <Text fill="#b94242" fontSmoothingType="LCD" layoutX="73.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have a good day!">
                      <font>
                         <Font name="Courier New" size="23.0" />
                      </font>
                   </Text>
+                  <ImageView fitHeight="52.0" fitWidth="63.0" layoutX="605.0" layoutY="-1.0" onMouseClicked="#translateTab" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/Google-Translate-icon.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <TabPane fx:id="tabPane" prefHeight="688.0" prefWidth="734.0" tabClosingPolicy="UNAVAILABLE">
@@ -160,7 +165,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #bed3e6;">
                            <children>
-                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #9bd8e8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane prefHeight="616.0" prefWidth="734.0" style="-fx-background-color: #7cb3de;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Text layoutX="84.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ cần edit" wrappingWidth="112.0">
                                        <font>
@@ -185,13 +190,42 @@
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="textEditAlert" alignment="CENTER" layoutX="36.0" layoutY="461.0" prefHeight="46.0" prefWidth="662.0" style="-fx-background-color: #9bd8e8;">
+                                    <TextField fx:id="textEditAlert" alignment="CENTER" editable="false" layoutX="36.0" layoutY="461.0" prefHeight="46.0" prefWidth="662.0" style="-fx-background-color: #7cb3de;">
                                        <font>
                                           <Font name="System Italic" size="17.0" />
                                        </font>
                                     </TextField>
                                  </children>
                               </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Translate">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #6cbab1;">
+                           <children>
+                              <TextArea fx:id="textTranslateEnglish" layoutX="14.0" layoutY="195.0" prefHeight="230.0" prefWidth="287.0" promptText="Nhập từ cần tra nghĩa vào đây!">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextArea>
+                              <TextArea fx:id="textTranslateVietnamese" layoutX="435.0" layoutY="194.0" prefHeight="232.0" prefWidth="292.0" />
+                              <Button layoutX="303.0" layoutY="282.0" mnemonicParsing="false" onAction="#translate" prefHeight="55.0" prefWidth="130.0" text="Translate">
+                                 <font>
+                                    <Font name="System Italic" size="23.0" />
+                                 </font>
+                              </Button>
+                              <Text layoutX="99.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English">
+                                 <font>
+                                    <Font name="System Bold" size="35.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="485.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietnamese">
+                                 <font>
+                                    <Font name="System Bold" size="35.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                     </content>
