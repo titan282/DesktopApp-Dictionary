@@ -75,10 +75,10 @@
                   </ImageView>
                   <ImageView fitHeight="84.0" fitWidth="79.0" layoutX="310.0" layoutY="-17.0" onMouseClicked="#homeClick" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/—Pngtree—vector%20house%20icon_3792370.png" />
+                        <Image url="@../icon/HomeIcon.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b94242" fontSmoothingType="LCD" layoutX="73.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have a good day!">
+                  <Text fill="#b94242" fontSmoothingType="LCD" layoutX="66.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello World!" wrappingWidth="171.8359375">
                      <font>
                         <Font name="Courier New" size="23.0" />
                      </font>
@@ -86,6 +86,11 @@
                   <ImageView fitHeight="52.0" fitWidth="63.0" layoutX="605.0" layoutY="-1.0" onMouseClicked="#translateTab" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/Google-Translate-icon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="247.0" onMouseClicked="#updateData" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/update.png" />
                      </image>
                   </ImageView>
                </children>

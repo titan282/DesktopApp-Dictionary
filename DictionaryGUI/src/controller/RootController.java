@@ -61,6 +61,7 @@ public class RootController implements Initializable {
     @FXML
     private TextArea textTranslateVietnamese;
 
+    public static int countAmountOfChange=0;
     protected ObservableList<String> list = FXCollections.observableArrayList();
     public DictionaryManagement words = new DictionaryManagement();
 
@@ -72,6 +73,7 @@ public class RootController implements Initializable {
         words.insertFromFile();
         loadData();
         searchList();
+        words.dictionaryToText();
     }
 
     public void addWord(String target, String exlain) {
@@ -209,6 +211,7 @@ public class RootController implements Initializable {
             listView.setItems(list);
             searchList();
             textRemoveAlert.setText("Xóa từ thành công!");
+            countAmountOfChange++;
         }
         else{
             textRemoveAlert.setText("Từ này không có trong từ điển. Vui lòng nhập từ khác!");
@@ -231,6 +234,7 @@ public class RootController implements Initializable {
             words.addWord(textEnglishAdd.getText(), textVietnameseAdd.getText());
             searchList();
             textAddAlert.setText("Thêm từ thành còng!");
+            countAmountOfChange++;
         }
         webView.getEngine().reload();
     }
@@ -251,6 +255,7 @@ public class RootController implements Initializable {
             listView.setItems(list);
             searchList();
             textEditAlert.setText("Edit từ thành công!");
+            countAmountOfChange++;
         }
         webView.getEngine().reload();
     }
@@ -339,6 +344,7 @@ public class RootController implements Initializable {
             words.addWord(textEnglishAdd.getText(), textVietnameseAdd.getText());
             searchList();
             textAddAlert.setText("Thêm từ thành còng!");
+
         }
         webView.getEngine().reload();
     }
@@ -390,6 +396,16 @@ public class RootController implements Initializable {
 
     public void typeEnglish(KeyEvent keyEvent) throws IOException {
         textTranslateVietnamese.setText(GoogleTranslate.translate("en","vi",textTranslateEnglish.getText()));
+    }
+
+    public void updateData(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/panel/update_panel.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("Update status!");
+        stage.setScene(scene);
+        stage.show();
+        words.dictionaryToText();
     }
 }
 
