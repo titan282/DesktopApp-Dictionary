@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sound">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/sound" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/sound" recursive="false" />
+  </library>
+</component>

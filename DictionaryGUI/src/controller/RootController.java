@@ -2,6 +2,8 @@ package controller;
 
 import cmd.*;
 import com.darkprograms.speech.translator.GoogleTranslate;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -130,15 +133,26 @@ public class RootController implements Initializable {
             String output = words.dictionaryLookup(target).getWord_explain();
             WebEngine webEngine = webView.getEngine();
             webEngine.loadContent(output);
-            String word = listView.getSelectionModel().getSelectedItem();
+            if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                if(mouseEvent.getClickCount() == 2){
+                    searchWord.setText(target);
+                    System.out.println("Double clicked");
+                }
+            }
         }
     }
 
     public void displayPressed(KeyEvent keyEvent) {
         String target = listView.getSelectionModel().getSelectedItem();
-        String output = words.dictionaryLookup(target).getWord_explain();
-        WebEngine webEngine = webView.getEngine();
-        webEngine.loadContent(output);
+        if(target!=null) {
+            String output = words.dictionaryLookup(target).getWord_explain();
+            WebEngine webEngine = webView.getEngine();
+            webEngine.loadContent(output);
+            if(keyEvent.getCode().toString().equals("ENTER")){
+                    searchWord.setText(target);
+                    System.out.println("Double clicked");
+            }
+        }
     }
 
 
@@ -149,9 +163,9 @@ public class RootController implements Initializable {
     }
 
     public void searchWordType(KeyEvent keyEvent) {
-        String x = searchWord.getText();
-        WebEngine webEngine = webView.getEngine();
-        webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
+//        String x = searchWord.getText();
+//        WebEngine webEngine = webView.getEngine();
+//        webEngine.loadContent(words.dictionaryLookup(x).getWord_explain());
     }
 
     public void handleRemove(MouseEvent mouseEvent) throws IOException {
@@ -199,6 +213,7 @@ public class RootController implements Initializable {
         textAddAlert.clear();
         textRemoveAlert.clear();
         textVietnammeseNew.clear();
+        textTranslateEnglish.clear();
     }
     public void deteleButton(ActionEvent actionEvent) {
         if(textRemove.getText().equals("")){
@@ -268,7 +283,24 @@ public class RootController implements Initializable {
     public void speakWord(MouseEvent mouseEvent)  {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(0);
-        loadWebView();
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            try {
+                voice.setRate(100);
+                voice.setPitch(100);
+                voice.setVolume(10);
+                voice.speak(searchWord.getText());
+                System.out.printf("ok");
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } else {
+            throw new IllegalStateException("Cannot find voice: kevin16");
+        }
     }
 
     public void homeClick(MouseEvent mouseEvent) {
@@ -406,6 +438,27 @@ public class RootController implements Initializable {
         stage.setScene(scene);
         stage.show();
         words.dictionaryToText();
+    }
+
+    public void speakTranslateArea(MouseEvent mouseEvent) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            try {
+                voice.setRate(100);
+                voice.setPitch(100);
+                voice.setVolume(10);
+                voice.speak(textTranslateEnglish.getText());
+                System.out.printf("ok");
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } else {
+            throw new IllegalStateException("Cannot find voice: kevin16");
+        }
     }
 }
 
